@@ -9,17 +9,21 @@
   <!-- this part defines the playback / control function and events -->
   <script>
     var markerFound = 0;
-	var markerFound = 1;
     AFRAME.registerComponent('button', {
         init: function ()
         {
           var elem = document.documentElement;
           var marker = document.querySelector("#marker");
+		  var marker1 = document.querySelector("#marker1");
           var fullbutton = document.querySelector("#fullscreen");
           var Video_0 = document.querySelector("#Video_Asset_0");
+		  var Video_1 = document.querySelector("#Video_Asset_1");
           var button = document.querySelector("#mutebutton");
+		  var button1 = document.querySelector("#mutebutton1");
           button.hidden = true;
+		  button1.hidden = true;
           Video_0.pause();
+		  Video_1.pause();
 
           marker.addEventListener("markerFound", function (evt) {
             markerFound = 1;
@@ -33,6 +37,19 @@
             Video_0.pause();
             button.hidden = true;
           });
+		  
+		  marker1.addEventListener("markerFound", function (evt) {
+            markerFound = 1;
+            button1.hidden = false;
+            // Video_0.play();  // if you want the video 
+            // to start immediently on marker detection, uncomment this
+          });
+
+          marker1.addEventListener("markerLost", function (evt) {
+            markerFound = 0;
+            Video_1.pause();
+            button1.hidden = true;
+          });
 
           // button for video play/pause
           button.addEventListener("click", function(evt){
@@ -45,6 +62,19 @@
               button.innerHTML="Play";
               Video_0.muted=true;
               Video_0.pause();
+            }
+          });
+		  
+		  button1.addEventListener("click", function(evt){
+            console.log("button1 clicked")
+            if(Video_1.muted==true){
+              button1.innerHTML="Pause";
+              Video_1.muted=false;
+              Video_1.play();
+            }else{
+              button1.innerHTML="Play";
+              Video_1.muted=true;
+              Video_1.pause();
             }
           });
 

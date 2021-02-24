@@ -54,29 +54,25 @@
             console.log("button clicked")
             if(Video_0.muted==true){
               button.innerHTML="Pause";
-			  if(markerFound == 1)
-			  {
 				Video_0.muted=false;
 				Video_0.play();
-			  }
-			  else
-			  {
-			    Video_1.muted=false;
-				Video_1.play();
-			  }
-            }else{
+            }else
+			{
               button.innerHTML="Play";
-			  if(markerFound == 1)
-			  {
+
 				Video_0.muted=true;
 				Video_0.pause();
-			  }
-			  else
-			  {
-			    Video_1.muted=true;
-				Video_1.pause();
-			  }
+            }
+			if(Video_1.muted==true){
+              button.innerHTML="Pause";
+				Video_1.muted=false;
+				Video_1.play();
+            }else
+			{
+              button.innerHTML="Play";
 
+				Video_1.muted=true;
+				Video_1.pause();
             }
           });
 

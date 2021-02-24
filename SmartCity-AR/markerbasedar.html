@@ -9,6 +9,7 @@
   <!-- this part defines the playback / control function and events -->
   <script>
     var markerFound = 0;
+	var markerFound = 1;
     AFRAME.registerComponent('button', {
         init: function ()
         {
@@ -92,6 +93,7 @@
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
   <div style='position: absolute; bottom: 10px; right: 30px; width:100%; text-align: center; z-index: 1;'>
     <button id="mutebutton" style='position: absolute; bottom: 10px' hidden>Play</button>
+	<button id="mutebutton1" style='position: absolute; bottom: 10px' hidden>Play</button>
   </div>
   <div style='position: absolute; bottom: 5px; left: 30px; width:100%; text-align: right; z-index: 1;'>
     <input type="image" id="fullscreen" src="assets/fullscreen.png" style='position: absolute; bottom: 0px; right: 35px;'></input>
